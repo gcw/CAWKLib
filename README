@@ -1,0 +1,60 @@
+CAWKLib is a project to build a useful library of functions in AWK. Some of the 
+included functionality is inspired by or borrowed from other languages like
+Python and Lua.
+
+HISTORY
+  The CAWKLib project started as part of BangCAWK which was part of CAWK. 
+
+  CAWK's Another Web Kit (CAWK) was started with the goal of developing a web
+application framework in AWK. One of the early issues was figuring out how to
+get all of the functionality we needed into the call to the interpreter. We
+could have manually built an awk invocation with many -f <file> additions or
+we could write our own wrapper/pre-processor. We chose the latter and BangCAWK
+was born. 
+
+  BangCAWK was sonamed for the 'shebang' line that it would replace 
+(#! /usr/local/bin/awk -f). "She Bangs CAWK" is just vulgar so we went with
+BangCAWK. The purpose of BangCAWK was to make it easy to write awk code that
+required code from other scripts or libraries such that they could be pulled
+in on execution and run together in a near-seemless fashion. This project is
+currently on hold. In part because the interpreted version we'd written as very
+kludgey and we've become aware of several alternative solutions that seem more
+robust. We're currently investigating runawk. 
+
+  CAWKLib is a separation (and improvement) of the libraries that were built
+for BangCAWK. The benefit is that they should be portable across various
+pre-processors/wrappers. 
+
+
+FOCUS AND PHILLOSOPHY
+  The focus of CAWKLib is on rapid development and the conventions used should 
+reflect that. There are (or will be) many areas of CAWKLib that could be better
+optimized either in general or for a given set of circumstances. That is not a
+primary concern for us. Because AWK is such an easy language to pick up if you
+feel something should be done a particular way, please feel free to modify the
+implementation for your own purposes. 
+
+  We try to follow a few basic rules of thumb: 
+      1) don't create arrays where strings will suffice
+      2) localize variables where possible
+      3) don't create excessive arrays as temporary holders
+note that I said "try to follow". 
+
+
+
+
+RELIGIOUS CONTENTION QUESTIONS: 
+
+Why did we choose AWK?
+It's small fast and does what we need it to do. 
+
+Why not just use igawk to include files?
+igawk works great for gawk but not for other versions of AWK.
+
+Why not just stick with GAWK?
+Gawk is a great interpreter and the GAWK maintainer (hi Arnold) has done much 
+the scripting community (not just AWK). Unfortunately some of the functionality
+in GAWK is not portable across various flavors of unix. Also, all of that added
+functionality in gawk comes at a cost, speed. Gawk is not the speediest of awk
+implementations. For these and other reasons we wanted to make CAWK as agnostic
+as is reasonably possible. 
